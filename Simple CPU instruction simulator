@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main() {
+    int memory[100] = {0};
+    int accumulator = 0;
+    int program[] = {1, 10, 2, 20, 3, 0}; // 1=LOAD, 2=ADD, 3=HALT
+    
+    memory[10] = 50; // Data at address 10
+    memory[20] = 25; // Data at address 20
+
+    for(int i = 0; i < 6; i += 2) {
+        int opcode = program[i];
+        int operand = program[i+1];
+
+        if(opcode == 1) accumulator = memory[operand];
+        else if(opcode == 2) accumulator += memory[operand];
+        else if(opcode == 3) break;
+    }
+
+    printf("Final Accumulator Value: %d\n", accumulator);
+    return 0;
+}
