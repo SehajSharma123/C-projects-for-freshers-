@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    char command[50];
+    printf("--- Simple C Shell ---\n");
+    printf("Enter command (e.g., dir, ls, date, help): ");
+    scanf("%s", command);
+
+    printf("Executing command...\n");
+    system(command); // Passes command to OS command processor
+
+    return 0;
+}
