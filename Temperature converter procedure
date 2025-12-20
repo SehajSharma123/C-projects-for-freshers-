@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+float toFahrenheit(float c) { return (c * 9 / 5) + 32; }
+float toCelsius(float f) { return (f - 32) * 5 / 9; }
+
+int main() {
+    int choice;
+    float temp;
+    printf("1. C to F\n2. F to C\nChoice: ");
+    scanf("%d", &choice);
+    printf("Enter temperature: ");
+    scanf("%f", &temp);
+
+    if(choice == 1) printf("%.2f F\n", toFahrenheit(temp));
+    else printf("%.2f C\n", toCelsius(temp));
+    
+    return 0;
+}
