@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Student {
+    int roll;
+    char name[50];
+    float marks;
+};
+
+void addStudent() {
+    struct Student s;
+    FILE *fp = fopen("students.txt", "a");
+    printf("Enter Roll, Name, Marks: ");
+    scanf("%d %s %f", &s.roll, s.name, &s.marks);
+    fprintf(fp, "%d %s %.2f\n", s.roll, s.name, s.marks);
+    fclose(fp);
+    printf("Record Added!\n");
+}
+
+void viewStudents() {
+    struct Student s;
+    FILE *fp = fopen("students.txt", "r");
+    if (!fp) return;
+    printf("\n--- Records ---\n");
+    while (fscanf(fp, "%d %s %f", &s.roll, s.name, &s.marks) != EOF) {
+        printf("ID: %d | Name: %s | Marks: %.2f\n", s.roll, s.name, s.marks);
+    }
+    fclose(fp);
+}
+
+int main() {
+    int ch;
+    while(1) {
+        printf("\n1. Add 2. View 3. Exit: ");
+        scanf("%d", &ch);
+        if(ch == 1) addStudent();
+        else if(ch == 2) viewStudents();
+        else break;
+    }
+    return 0;
+}
