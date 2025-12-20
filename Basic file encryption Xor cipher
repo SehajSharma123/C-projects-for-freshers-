@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+void encryptDecrypt(char *fileName, char key) {
+    FILE *fin = fopen(fileName, "rb+");
+    if (!fin) return;
+
+    int ch;
+    long pos;
+    while ((ch = fgetc(fin)) != EOF) {
+        pos = ftell(fin);
+        fseek(fin, pos - 1, SEEK_SET);
+        fputc(ch ^ key, fin); // Bitwise XOR
+        fseek(fin, pos, SEEK_SET);
+    }
+    fclose(fin);
+    printf("Operation completed.\n");
+}
+
+int main() {
+    char file[] = "data.txt";
+    char key = 'K'; 
+    encryptDecrypt(file, key);
+    return 0;
+}
