@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+#define CANDIDATE1 "Apple"
+#define CANDIDATE2 "Banana"
+
+int main() {
+    int choice, i, n, v1 = 0, v2 = 0;
+    printf("Enter number of voters: ");
+    scanf("%d", &n);
+
+    for(i=0; i<n; i++) {
+        printf("\n1. %s\n2. %s\nVote: ", CANDIDATE1, CANDIDATE2);
+        scanf("%d", &choice);
+        if(choice == 1) v1++;
+        else if(choice == 2) v2++;
+        else printf("Invalid Vote Spoiled!\n");
+    }
+
+    printf("\n--- Result ---\n%s: %d\n%s: %d\n", CANDIDATE1, v1, CANDIDATE2, v2);
+    if(v1 > v2) printf("Winner: %s", CANDIDATE1);
+    else if(v2 > v1) printf("Winner: %s", CANDIDATE2);
+    else printf("It's a Tie!");
+    
+    return 0;
+}
