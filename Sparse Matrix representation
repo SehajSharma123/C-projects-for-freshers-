@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+int main() {
+    int matrix[3][3] = {{0, 0, 3}, {0, 0, 0}, {0, 5, 0}};
+    int size = 0;
+
+    for (int i = 0; i < 3; i++)
+        for (int j = 0; j < 3; j++)
+            if (matrix[i][j] != 0) size++;
+
+    int sparse[size][3];
+    int k = 0;
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            if (matrix[i][j] != 0) {
+                sparse[k][0] = i;
+                sparse[k][1] = j;
+                sparse[k][2] = matrix[i][j];
+                k++;
+            }
+        }
+    }
+
+    printf("Sparse Representation (Row, Col, Value):\n");
+    for (int i = 0; i < size; i++)
+        printf("%d %d %d\n", sparse[i][0], sparse[i][1], sparse[i][2]);
+
+    return 0;
+}
