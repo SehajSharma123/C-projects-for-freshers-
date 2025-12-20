@@ -1,0 +1,22 @@
+#include <stdio.h>
+#define SIZE 5
+
+int items[SIZE], front = -1, rear = -1;
+
+void enqueue(int value) {
+    if ((front == 0 && rear == SIZE - 1) || (front == rear + 1)) {
+        printf("Queue Full\n");
+    } else {
+        if (front == -1) front = 0;
+        rear = (rear + 1) % SIZE;
+        items[rear] = value;
+        printf("Inserted %d\n", value);
+    }
+}
+
+int main() {
+    enqueue(10); enqueue(20); enqueue(30);
+    enqueue(40); enqueue(50);
+    enqueue(60); // Should be full
+    return 0;
+}
