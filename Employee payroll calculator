@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+struct Employee {
+    char name[30];
+    float basic;
+};
+
+int main() {
+    struct Employee e;
+    float hra, da, gross;
+    
+    printf("Enter name and basic salary: ");
+    scanf("%s %f", e.name, &e.basic);
+
+    hra = e.basic * 0.20; // 20% HRA
+    da = e.basic * 0.50;  // 50% DA
+    gross = e.basic + hra + da;
+
+    printf("\nPayroll for %s\n", e.name);
+    printf("Gross Salary: $%.2f\n", gross);
+    
+    return 0;
+}
