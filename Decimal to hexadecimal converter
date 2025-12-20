@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main() {
+    long decimal;
+    char hex[100];
+    int i = 0;
+
+    printf("Enter Decimal Number: ");
+    scanf("%ld", &decimal);
+
+    while (decimal != 0) {
+        int temp = decimal % 16;
+        if (temp < 10) hex[i++] = temp + 48; // 0-9
+        else hex[i++] = temp + 55;           // A-F
+        decimal /= 16;
+    }
+
+    printf("Hexadecimal: ");
+    for (int j = i - 1; j >= 0; j--) printf("%c", hex[j]);
+    printf("\n");
+    return 0;
+}
