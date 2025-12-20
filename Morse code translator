@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+void charToMorse(char c) {
+    char *morse[] = {".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."};
+    if (isalpha(c)) {
+        printf("%s ", morse[toupper(c) - 'A']);
+    } else if (c == ' ') {
+        printf("/ ");
+    }
+}
+
+int main() {
+    char text[100];
+    printf("Enter text to translate: ");
+    fgets(text, sizeof(text), stdin);
+
+    for (int i = 0; text[i] != '\0'; i++) {
+        charToMorse(text[i]);
+    }
+    return 0;
+}
