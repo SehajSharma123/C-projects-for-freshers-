@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <string.h>
+
+struct Book {
+    int id;
+    char title[50];
+    int isIssued;
+};
+
+void issueBook(struct Book *b) {
+    if (b->isIssued) printf("Already issued.\n");
+    else {
+        b->isIssued = 1;
+        printf("Book %s issued successfully.\n", b->title);
+    }
+}
+
+int main() {
+    struct Book myBook = {101, "C Programming", 0};
+    issueBook(&myBook);
+    return 0;
+}
