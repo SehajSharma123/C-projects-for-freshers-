@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <time.h>
+
+int main() {
+    time_t start, end;
+    char dummy;
+
+    printf("Press Enter to START the timer...");
+    scanf("%c", &dummy);
+    start = time(NULL);
+
+    printf("Timer running... Press Enter to STOP...");
+    scanf("%c", &dummy);
+    end = time(NULL);
+
+    printf("Elapsed time: %.f seconds\n", difftime(end, start));
+    return 0;
+}
