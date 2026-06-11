@@ -1,0 +1,49 @@
+from tkinter import *
+from tkinter import messagebox
+import smtplib
+
+root = Tk()
+root.title("Email Sender")
+root.geometry("500x400")
+
+Label(root,text="Receiver Email").pack()
+receiver = Entry(root,width=40)
+receiver.pack()
+
+Label(root,text="Subject").pack()
+subject = Entry(root,width=40)
+subject.pack()
+
+Label(root,text="Message").pack()
+message_box = Text(root,height=8,width=40)
+message_box.pack()
+
+def send_email():
+    try:
+        sender = "yourgmail@gmail.com"
+        password = "app_password"
+
+        server = smtplib.SMTP("smtp.gmail.com",587)
+        server.starttls()
+
+        server.login(sender,password)
+
+        msg = f"Subject:{subject.get()}\n\n{message_box.get('1.0',END)}"
+
+        server.sendmail(sender,
+                        receiver.get(),
+                        msg)
+
+        server.quit()
+
+        messagebox.showinfo("Success",
+                            "Email Sent")
+
+    except:
+        messagebox.showerror("Error",
+                             "Email Failed")
+
+Button(root,text="Send Email",
+       command=send_email).pack(pady=15)
+
+root.mainloop()
